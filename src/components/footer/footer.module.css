@@ -1,0 +1,202 @@
+/* Base styles */
+.footer {
+    width: 100%;
+    background-color: #f8f9fa;
+    color: #495057;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* gap: 2.5rem; */
+  }
+  
+  /* Logo styles */
+  .logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: fadeInUp 0.8s ease-out;
+  }
+  
+  .logoIcon {
+    font-size: 2.5rem;
+    color: #0d9488;
+    transition: transform 0.3s ease;
+  }
+  
+  .logoIcon:hover {
+    transform: rotate(15deg);
+  }
+  
+  .logoText {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0d9488;
+    margin: 0;
+    background: linear-gradient(to right, #0d9488, #14b8a6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Description */
+  .description {
+    width: 80%;
+    max-width: 700px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.3s forwards;
+  }
+  
+  /* Links */
+  .links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: #343a40;
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    padding: 0.5rem 0;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards;
+    transition: color 0.3s ease;
+  }
+  
+  .link:hover {
+    color: #0d9488;
+  }
+  
+  .link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0d9488;
+    transition: width 0.3s ease;
+  }
+  
+  .link:hover::after {
+    width: 100%;
+  }
+  
+  /* Social icons */
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .socialIcon {
+    font-size: 1.5rem;
+    color: #6c757d;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: rgba(13, 148, 136, 0.1);
+  }
+  
+  .socialIcon:hover {
+    color: white;
+    background-color: #0d9488;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .container {
+      padding: 3rem 1.5rem;
+      gap: 2rem;
+    }
+    
+    .description {
+      width: 90%;
+      font-size: 1rem;
+    }
+    
+    .links {
+      gap: 1.5rem;
+    }
+    
+    .link {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 2.5rem 1rem;
+      gap: 1.5rem;
+    }
+    
+    .logoContainer {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .logoText {
+      font-size: 1.5rem;
+    }
+    
+    .links {
+      gap: 1rem;
+    }
+    
+    .socials {
+      gap: 1rem;
+    }
+    
+    .socialIcon {
+      width: 2.2rem;
+      height: 2.2rem;
+      font-size: 1.2rem;
+    }
+  }
