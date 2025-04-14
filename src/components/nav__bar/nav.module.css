@@ -1,6 +1,6 @@
-.nav-parent{
+.nav-parent {
     width: 100%;
-    height: 70px;
+    height: 80px;
     padding: 0 2rem;
     background-color: #111827;
     display: flex;
@@ -11,92 +11,203 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
 }
 
-.left{
+.left {
     width: 20%;
     display: flex;
     gap: 1rem;
+    align-items: center;
+    transition: transform 0.3s ease;
 }
 
-.middle{
+.left:hover {
+    transform: scale(1.02);
+}
+
+.left img {
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.left img:hover {
+    transform: rotate(15deg);
+}
+
+.left h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #2563eb, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all 0.3s ease;
+}
+
+.middle {
     display: flex;
-    gap: 1.5rem;
-
-    a:nth-of-type(1){
-        color:#2563eb;
-    }
-
-    a{
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-    }
-
-    @media screen and (max-width: 780px) {
-        display: none;
-    }
+    gap: 2rem;
 }
 
+.middle a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: all 0.3s ease;
+}
 
+.middle a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #2563eb;
+    transition: width 0.3s ease;
+}
+
+.middle a:hover::after {
+    width: 100%;
+}
+
+.middle a:nth-of-type(1) {
+    color: #2563eb;
+}
+
+.middle a:hover {
+    color: #2563eb;
+    transform: translateY(-2px);
+}
 
 .right {
     min-width: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+}
 
-    
+.right button {
+    background-color: #2563eb;
+    border: none;
+    outline: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+}
 
-    button{
-        background-color: #2563eb;
-        border: none;
-        outline: none;
-        padding: 0.7rem 1rem;
-        border-radius: 0.3rem;
-        color: white;
-        font-weight: 600;
-        cursor: pointer;
-    }
+.right button:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(37, 99, 235, 0.4);
+}
 
-    .hamburger-div{
+.right button:active {
+    transform: translateY(0);
+}
+
+.right button:focus {
+    outline: 2px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+.hamburger-div {
+    display: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hamburger-div svg {
+    width: 2rem;
+    height: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.hamburger-div:hover svg {
+    transform: scale(1.1);
+    color: #2563eb;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 780px) {
+    .middle {
         display: none;
+    }
     
-        svg{
-            width: 2rem;
-            height: 2rem;
-        }
-        @media screen and (max-width: 780px) {
-            display: block;
-        }
+    .hamburger-div {
+        display: block;
     }
-
-    button:hover{
-        background-color: #004bec;
-    }
-    button:focus{
-        border: 5px solid rgb(0, 46, 144);
+    
+    .nav-parent {
+        padding: 0 1.5rem;
     }
 }
 
-
 @media screen and (max-width: 500px) {
-    .nav-parent{
-        padding: 0;
+    .nav-parent {
+        height: 70px;
+        padding: 0 1rem;
     }
-    button{
-        padding: 0.3rem 0.5rem;
+    
+    .left h2 {
+        font-size: 1.3rem;
     }
-
-    .hamburger-div svg{
-        width: 1.5rem;
-        height: 1.5rem;
+    
+    .right button {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .hamburger-div svg {
+        width: 1.8rem;
+        height: 1.8rem;
     }
 }
 
 @media screen and (max-width: 350px) {
-    .right button{
+    .right button {
         display: none;
+    }
+    
+    .left {
+        width: auto;
+    }
+}
+
+/* Animation for navbar on scroll */
+.nav-parent.scrolled {
+    height: 70px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: rgba(17, 24, 39, 0.95);
+}
+
+/* Mobile menu animation */
+.mobile-menu {
+    width: 100%;
+    background-color: #1f2937;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
